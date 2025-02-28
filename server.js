@@ -16,7 +16,14 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// Configure CORS to accept all origins, including localhost
+app.use(cors({
+  origin: true, // This allows all origins including localhost
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 // Make uploads folder static
